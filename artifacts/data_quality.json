@@ -1,0 +1,94 @@
+{
+  "source_path": "C:\\Users\\wagim\\OneDrive\\Documentos\\deepseek-harness\\default-workspace\\campaign-optimizer\\data\\raw\\facebook_ads.csv",
+  "source_sha256": "2a1d447f63715a32e3d5e566ab19f70648ab623ed88885310ce8ee68a91d20d6",
+  "dataset_id": "c70e7203b4dc25e9",
+  "n_rows_raw": 1143,
+  "n_rows_clean": 761,
+  "columns_found": [
+    "ad_id",
+    "campaign_id",
+    "fb_campaign_id",
+    "age",
+    "gender",
+    "interest1",
+    "interest2",
+    "interest3",
+    "reporting_start",
+    "reporting_end",
+    "impressions",
+    "clicks",
+    "spend",
+    "total_conversions",
+    "approved_conversions"
+  ],
+  "columns_missing": [],
+  "columns_extra": [],
+  "column_mapping": {
+    "ad_id": "ad_id",
+    "campaign_id": "campaign_id",
+    "fb_campaign_id": "fb_campaign_id",
+    "age": "age",
+    "gender": "gender",
+    "interest1": "interest1",
+    "interest2": "interest2",
+    "interest3": "interest3",
+    "reporting_start": "reporting_start",
+    "reporting_end": "reporting_end",
+    "impressions": "impressions",
+    "clicks": "clicks",
+    "spend": "spent",
+    "total_conversions": "total_conversion",
+    "approved_conversions": "approved_conversion"
+  },
+  "duplicate_rows": 0,
+  "duplicate_ad_ids": 0,
+  "desalineadas": 382,
+  "nulls": {
+    "ad_id": 0,
+    "campaign_id": 382,
+    "fb_campaign_id": 382,
+    "age": 0,
+    "gender": 0,
+    "interest1": 0,
+    "interest2": 0,
+    "interest3": 0,
+    "reporting_start": 0,
+    "reporting_end": 0,
+    "impressions": 0,
+    "clicks": 0,
+    "spend": 0,
+    "total_conversions": 382,
+    "approved_conversions": 382
+  },
+  "unparsable": {
+    "impressions": 0,
+    "clicks": 0,
+    "spend": 0,
+    "total_conversions": 382,
+    "approved_conversions": 382
+  },
+  "negatives": {},
+  "approved_gt_total": 0,
+  "conversions_without_clicks": 200,
+  "zero_impressions_rows": 0,
+  "zero_spend_rows": 203,
+  "date_range": {
+    "min": "2017-08-17",
+    "max": "2017-08-30"
+  },
+  "dropped": {
+    "filas_desalineadas": 382,
+    "nulos_en_campos_obligatorios": 0,
+    "nulos_en_objetivos": 0,
+    "valores_negativos": 0
+  },
+  "flags": {
+    "conversion_sin_clics": 200,
+    "aprobadas_mayor_que_totales": 0
+  },
+  "notes": [
+    "382 filas tienen las columnas desplazadas (la edad aparece en campaign_id, el género en fb_campaign_id, etc.): se pierden campaign_id y fb_campaign_id, así que su gasto y sus conversiones no son atribuibles a ninguna campaña. Se excluyen del análisis, no del archivo. Verifica que el CSV descargado no esté corrupto.",
+    "200 filas tienen conversiones con cero clics. Se conservan marcadas (flag_conversion_sin_clics): pueden reflejar conversiones view-through o un error de registro, y descartarlas eliminaría gasto real.",
+    "Archivo original intacto: facebook_ads.csv (2a1d447f6371…)."
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "generado_en": "2026-11-10T22:54:13+00:00",
+  "dataset_id": "c70e7203b4dc25e9",
+  "source_sha256": "2a1d447f63715a32e3d5e566ab19f70648ab623ed88885310ce8ee68a91d20d6",
+  "n_rows": 761,
+  "n_campaigns": 3,
+  "semilla": 42,
+  "escenario": "Estimación posterior a la interacción: se asume conocido el gasto, las impresiones y los clics del anuncio. No se usan conversiones ni variables derivadas de ellas (CTR, CPC, coste por conversión).",
+  "variables_entrada": [
+    "spend",
+    "impressions",
+    "clicks",
+    "age",
+    "gender",
+    "interest1"
+  ],
+  "variables_excluidas": [
+    "ad_id",
+    "campaign_id",
+    "fb_campaign_id",
+    "total_conversions",
+    "approved_conversions"
+  ],
+  "particion": "leave-one-campaign-out",
+  "objetivos": [
+    "conversiones_totales",
+    "conversiones_aprobadas"
+  ],
+  "hiperparametros_elegidos": {
+    "conversiones_totales/random_forest": [
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": 12,
+          "min_samples_leaf": 3
+        },
+        "inner_mae": 1.6673983546697075,
+        "held_out_campaign": 916
+      },
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": 12,
+          "min_samples_leaf": 3
+        },
+        "inner_mae": 1.7471118541944257,
+        "held_out_campaign": 936
+      },
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": null,
+          "min_samples_leaf": 1
+        },
+        "inner_mae": 0.2022335302256279,
+        "held_out_campaign": 1178
+      }
+    ],
+    "conversiones_totales/adaboost": [
+      {
+        "params": {
+          "n_estimators": 100,
+          "learning_rate": 0.5
+        },
+        "inner_mae": 2.1540312573290787,
+        "held_out_campaign": 916
+      },
+      {
+        "params": {
+          "n_estimators": 100,
+          "learning_rate": 0.5
+        },
+        "inner_mae": 2.310550621197895,
+        "held_out_campaign": 936
+      },
+      {
+        "params": {
+          "n_estimators": 200,
+          "learning_rate": 1.0
+        },
+        "inner_mae": 0.25864255841248174,
+        "held_out_campaign": 1178
+      }
+    ],
+    "conversiones_aprobadas/random_forest": [
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": null,
+          "min_samples_leaf": 1
+        },
+        "inner_mae": 0.9435305656071142,
+        "held_out_campaign": 916
+      },
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": 12,
+          "min_samples_leaf": 3
+        },
+        "inner_mae": 0.9226699416050002,
+        "held_out_campaign": 936
+      },
+      {
+        "params": {
+          "n_estimators": 300,
+          "max_depth": null,
+          "min_samples_leaf": 1
+        },
+        "inner_mae": 0.49381665070242664,
+        "held_out_campaign": 1178
+      }
+    ],
+    "conversiones_aprobadas/adaboost": [
+      {
+        "params": {
+          "n_estimators": 200,
+          "learning_rate": 0.5
+        },
+        "inner_mae": 0.9740187218021293,
+        "held_out_campaign": 916
+      },
+      {
+        "params": {
+          "n_estimators": 200,
+          "learning_rate": 1.0
+        },
+        "inner_mae": 0.881210205983824,
+        "held_out_campaign": 936
+      },
+      {
+        "params": {
+          "n_estimators": 100,
+          "learning_rate": 0.5
+        },
+        "inner_mae": 0.49716782124420966,
+        "held_out_campaign": 1178
+      }
+    ]
+  },
+  "metricas": [
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "adaboost",
+      "modelo_etiqueta": "AdaBoost",
+      "mae": 0.8550935468612968,
+      "rmse": 1.705319705046035,
+      "r2": -0.06127671927019196,
+      "n": 761
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "dummy",
+      "modelo_etiqueta": "Referencia (media)",
+      "mae": 1.1016531825329525,
+      "rmse": 1.8562995216744398,
+      "r2": -0.2575148495512183,
+      "n": 761
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "random_forest",
+      "modelo_etiqueta": "Random Forest",
+      "mae": 0.7719691890518178,
+      "rmse": 1.6194726437103792,
+      "r2": 0.04288472099463103,
+      "n": 761
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "adaboost",
+      "modelo_etiqueta": "AdaBoost",
+      "mae": 1.5573866399678746,
+      "rmse": 4.026581245630405,
+      "r2": 0.016167237754507235,
+      "n": 761
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "dummy",
+      "modelo_etiqueta": "Referencia (media)",
+      "mae": 2.7108932506923686,
+      "rmse": 4.651910508291082,
+      "r2": -0.31314006007317663,
+      "n": 761
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "random_forest",
+      "modelo_etiqueta": "Random Forest",
+      "mae": 1.1128380146152028,
+      "rmse": 3.8833001191008405,
+      "r2": 0.08493854902877196,
+      "n": 761
+    }
+  ],
+  "metricas_por_campaña": [
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "random_forest",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 0.1905278925810711,
+      "rmse": 0.30703918139592407
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "random_forest",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 0.24318510687383246,
+      "rmse": 0.5197354880872006
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "random_forest",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 2.9783676268861456,
+      "rmse": 6.832946795584904
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "adaboost",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 0.6639019972736052,
+      "rmse": 0.6719719250111518
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "adaboost",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 0.8798012880172962,
+      "rmse": 0.9401466903194383
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "adaboost",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 3.0497643107932197,
+      "rmse": 6.9990776723921
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "dummy",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 1.1706218240871709,
+      "rmse": 1.1995593193557863
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "dummy",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 2.5845887031231864,
+      "rmse": 2.626166862333973
+    },
+    {
+      "objetivo": "conversiones_totales",
+      "modelo": "dummy",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 3.294349905461017,
+      "rmse": 7.367610830317021
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "random_forest",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 0.46839506172839507,
+      "rmse": 0.522200551165795
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "random_forest",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 0.5100902719865662,
+      "rmse": 0.5773587028967887
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "random_forest",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 1.3394787379972566,
+      "rmse": 2.7415952455038255
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "adaboost",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 0.517854563426371,
+      "rmse": 0.5602271185956623
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "adaboost",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 0.6072524869253825,
+      "rmse": 0.6816286508024917
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "adaboost",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 1.4032793777903099,
+      "rmse": 2.854888974722577
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "dummy",
+      "campaña_evaluada": 916,
+      "n": 54,
+      "mae": 0.5326104038975326,
+      "rmse": 0.607246998945824
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "dummy",
+      "campaña_evaluada": 936,
+      "n": 464,
+      "mae": 0.991314002089864,
+      "rmse": 1.1002360159452773
+    },
+    {
+      "objetivo": "conversiones_aprobadas",
+      "modelo": "dummy",
+      "campaña_evaluada": 1178,
+      "n": 243,
+      "mae": 1.4387959387959388,
+      "rmse": 2.8979181332471877
+    }
+  ],
+  "referencia_superada": {
+    "conversiones_aprobadas/adaboost": true,
+    "conversiones_aprobadas/random_forest": true,
+    "conversiones_totales/adaboost": true,
+    "conversiones_totales/random_forest": true
+  },
+  "versiones": {
+    "python": "3.12.16",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4"
+  },
+  "calidad_datos": {
+    "source_path": "C:\\Users\\wagim\\OneDrive\\Documentos\\deepseek-harness\\default-workspace\\campaign-optimizer\\data\\raw\\facebook_ads.csv",
+    "source_sha256": "2a1d447f63715a32e3d5e566ab19f70648ab623ed88885310ce8ee68a91d20d6",
+    "dataset_id": "c70e7203b4dc25e9",
+    "n_rows_raw": 1143,
+    "n_rows_clean": 761,
+    "columns_found": [
+      "ad_id",
+      "campaign_id",
+      "fb_campaign_id",
+      "age",
+      "gender",
+      "interest1",
+      "interest2",
+      "interest3",
+      "reporting_start",
+      "reporting_end",
+      "impressions",
+      "clicks",
+      "spend",
+      "total_conversions",
+      "approved_conversions"
+    ],
+    "columns_missing": [],
+    "columns_extra": [],
+    "column_mapping": {
+      "ad_id": "ad_id",
+      "campaign_id": "campaign_id",
+      "fb_campaign_id": "fb_campaign_id",
+      "age": "age",
+      "gender": "gender",
+      "interest1": "interest1",
+      "interest2": "interest2",
+      "interest3": "interest3",
+      "reporting_start": "reporting_start",
+      "reporting_end": "reporting_end",
+      "impressions": "impressions",
+      "clicks": "clicks",
+      "spend": "spent",
+      "total_conversions": "total_conversion",
+      "approved_conversions": "approved_conversion"
+    },
+    "duplicate_rows": 0,
+    "duplicate_ad_ids": 0,
+    "desalineadas": 382,
+    "nulls": {
+      "ad_id": 0,
+      "campaign_id": 382,
+      "fb_campaign_id": 382,
+      "age": 0,
+      "gender": 0,
+      "interest1": 0,
+      "interest2": 0,
+      "interest3": 0,
+      "reporting_start": 0,
+      "reporting_end": 0,
+      "impressions": 0,
+      "clicks": 0,
+      "spend": 0,
+      "total_conversions": 382,
+      "approved_conversions": 382
+    },
+    "unparsable": {
+      "impressions": 0,
+      "clicks": 0,
+      "spend": 0,
+      "total_conversions": 382,
+      "approved_conversions": 382
+    },
+    "negatives": {},
+    "approved_gt_total": 0,
+    "conversions_without_clicks": 200,
+    "zero_impressions_rows": 0,
+    "zero_spend_rows": 203,
+    "date_range": {
+      "min": "2017-08-17",
+      "max": "2017-08-30"
+    },
+    "dropped": {
+      "filas_desalineadas": 382,
+      "nulos_en_campos_obligatorios": 0,
+      "nulos_en_objetivos": 0,
+      "valores_negativos": 0
+    },
+    "flags": {
+      "conversion_sin_clics": 200,
+      "aprobadas_mayor_que_totales": 0
+    },
+    "notes": [
+      "382 filas tienen las columnas desplazadas (la edad aparece en campaign_id, el género en fb_campaign_id, etc.): se pierden campaign_id y fb_campaign_id, así que su gasto y sus conversiones no son atribuibles a ninguna campaña. Se excluyen del análisis, no del archivo. Verifica que el CSV descargado no esté corrupto.",
+      "200 filas tienen conversiones con cero clics. Se conservan marcadas (flag_conversion_sin_clics): pueden reflejar conversiones view-through o un error de registro, y descartarlas eliminaría gasto real.",
+      "Archivo original intacto: facebook_ads.csv (2a1d447f6371…)."
+    ]
+  }
+}

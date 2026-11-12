@@ -1,0 +1,26 @@
+# Datos: el CSV original no se versiona (licencia y tamaño). Ver README.
+data/raw/*
+!data/raw/.gitkeep
+
+# Artefactos generados: reproducibles con el comando de entrenamiento.
+artifacts/*
+!artifacts/.gitkeep
+
+# Entornos
+.venv/
+.uv-cache/
+.uv-python/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Herramientas de verificación visual
+.tools/
+.npm-cache/
+.tmp-*/
+pytest-cache-files-*/
+pytest-of-*/

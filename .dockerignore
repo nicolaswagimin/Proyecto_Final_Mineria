@@ -1,0 +1,13 @@
+.venv/
+.uv-cache/
+.uv-python/
+.uv/
+.tmp-dryrun/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/raw/
+artifacts/
+.git/
+*.md
+!README.md
