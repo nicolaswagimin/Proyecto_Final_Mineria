@@ -29,3 +29,6 @@ def test_cada_seccion_renderiza(section):
     at.radio[0].set_value(section)
     at.run()
     assert at.exception == [], f"{section} lanzó: {[str(e) for e in at.exception]}"
+    if section == "Modelos":
+        assert not at.warning, [w.value for w in at.warning]
+        assert len(at.get("plotly_chart")) >= 3

@@ -8,6 +8,19 @@ import pytest
 from campaign_optimizer import data, modeling
 
 
+@pytest.mark.parametrize("field,value", [
+    ("dataset_id", "otro-conjunto"),
+    ("source_sha256", "otro-archivo"),
+    ("n_rows", 99),
+])
+def test_rechaza_resultados_de_otros_datos(field, value):
+    quality = {"dataset_id": "conjunto", "source_sha256": "archivo", "n_rows_clean": 8}
+    report = {"dataset_id": "conjunto", "source_sha256": "archivo", "n_rows": 8}
+    assert modeling.report_is_compatible(report, quality)
+    report[field] = value
+    assert not modeling.report_is_compatible(report, quality)
+
+
 @pytest.fixture
 def clean(raw_df):
     normalized, _ = data.normalize(raw_df)

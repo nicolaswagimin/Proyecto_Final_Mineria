@@ -69,6 +69,17 @@ def test_totales_de_limpieza_suman(raw_df):
     assert q.n_rows_raw - descartadas - q.duplicate_rows == q.n_rows_clean
 
 
+def test_dataset_id_no_depende_del_sistema_operativo(raw_df, monkeypatch):
+    import os
+
+    normalized, _ = data.normalize(raw_df)
+    clean, _ = data.validate_and_clean(normalized)
+    monkeypatch.setattr(os, "linesep", "\n")
+    linux_id = data.dataset_id(clean)
+    monkeypatch.setattr(os, "linesep", "\r\n")
+    assert data.dataset_id(clean) == linux_id
+
+
 def test_detecta_filas_desalineadas(shifted_raw_df):
     """El bloque corrupto del archivo real no debe colarse como dato válido."""
     normalized, _ = data.normalize(shifted_raw_df)

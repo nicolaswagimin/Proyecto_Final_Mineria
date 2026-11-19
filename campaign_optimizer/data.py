@@ -112,7 +112,8 @@ def dataset_id(df: pd.DataFrame) -> str:
     ordered = ordered.sort_values(
         ["campaign_id", "fb_campaign_id", "ad_id"], kind="mergesort", na_position="first"
     )
-    payload = ordered.to_csv(index=False).encode("utf-8")
+    # La huella debe ser la misma en Windows (CRLF) y Linux/macOS (LF).
+    payload = ordered.to_csv(index=False, lineterminator="\n").encode("utf-8")
     return hashlib.sha256(payload).hexdigest()[:16]
 
 

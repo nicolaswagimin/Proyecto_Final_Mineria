@@ -1,6 +1,6 @@
 {
   "generado_en": "2026-11-10T22:54:13+00:00",
-  "dataset_id": "c70e7203b4dc25e9",
+  "dataset_id": "8fed964f41f73531",
   "source_sha256": "2a1d447f63715a32e3d5e566ab19f70648ab623ed88885310ce8ee68a91d20d6",
   "n_rows": 761,
   "n_campaigns": 3,
@@ -355,7 +355,7 @@
   "calidad_datos": {
     "source_path": "C:\\Users\\wagim\\OneDrive\\Documentos\\deepseek-harness\\default-workspace\\campaign-optimizer\\data\\raw\\facebook_ads.csv",
     "source_sha256": "2a1d447f63715a32e3d5e566ab19f70648ab623ed88885310ce8ee68a91d20d6",
-    "dataset_id": "c70e7203b4dc25e9",
+    "dataset_id": "8fed964f41f73531",
     "n_rows_raw": 1143,
     "n_rows_clean": 761,
     "columns_found": [
